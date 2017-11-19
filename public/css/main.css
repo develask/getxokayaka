@@ -1,0 +1,76 @@
+div.background {
+    background-attachment: fixed;
+    background-color: transparent;
+    background-repeat: repeat;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 50px);
+    z-index: 0;
+    background-position: 0px 50px;
+}
+#k11{
+    background-image: url(/background/k1-1.png);
+}
+#k12{
+    background-image: url(/background/k1-2.png);
+}
+#k13{
+    background-image: url(/background/k1-3.png);
+}
+#k14{
+    background-image: url(/background/k1-4.png);
+}
+#k15{
+    background-image: url(/background/k1-5.png);
+}
+#k21{
+    background-image: url(/background/k2-1.png);
+}
+#k22{
+    background-image: url(/background/k2-2.png);
+}
+#c11{
+    background-image: url(/background/c1-1.png);
+}
+#c21{
+    background-image: url(/background/c2-1.png);
+}
+.blog-sidebar, .blog-main {
+    background-color: white;
+    border-radius: 4px;
+}
+.blog-post img{
+    max-width: 60%;
+    margin: 10px 20%;
+}
+.blog-post p{
+    text-indent: 15px;
+}
+.blog-post p.blog-post-meta{
+    text-indent: 5px;
+}
+.bs-callout {
+padding: 20px;
+margin: 20px 0;
+border: 1px solid #eee;
+border-left-width: 5px;
+border-radius: 3px;
+}
+.bs-callout-info {
+border-left-color: #1b809e;
+}
+.bs-callout-warning {
+border-left-color: #aa6708;
+}
+.bs-callout-danger {
+border-left-color: #ce4844;
+}
+.bs-docs-sidebar.affix {
+    right: 100px;
+    width: 25%;
+    background-color: white;
+    border-radius: 4px;
+    padding: 10px;
+}
