@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Getxo KAYAKA</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script>
+</head>
+<body>
+
+	<nav id="menu" class="flex items-center justify-between flex-wrap bg-teal p-6">
+		<div class="flex items-center flex-no-shrink text-white mr-6">
+			<svg class="h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+				<path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
+			</svg>
+			<img src="img/logo.png" height="45">
+		</div>
+		<div class="block lg:hidden">
+			<button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">
+				<svg class="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>Menu</title>
+					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+				</svg>
+			</button>
+		</div>
+		<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+			<div class="text-sm lg:flex-grow">
+				<a href="#header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"  data-menuanchor="header">Header</a>
+				<a href="#info" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"  data-menuanchor="info">Info</a>
+				<a href="#contact" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white"  data-menuanchor="contact">Contact</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<div id="fullpage">
+		<div class="section" data-anchor="header">Header section</div>
+		<div class="section" data-anchor="info">Info section</div>
+		<div class="section" data-anchor="contact">Contact section</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				menu: '#menu',
+				sectionsColor: ['#C0C0C0', '#6A1B19', 'orange'],
+
+				navigation: true,
+			});
+		});
+	</script>
+
+	<style type="text/css">
+		#menu {
+			position: fixed;
+			width: 100%;
+			top: 0;
+			z-index: 9;
+		}
+
+		.section {
+			text-align:center;
+			font-size: 3em;
+			}
+		.content{
+			margin:50px;
+		}
+		a.active {
+			font-size: 2em;
+		}
+	</style>
+
+</body>
+</html>

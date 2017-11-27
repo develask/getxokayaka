@@ -1,0 +1,85 @@
+div.container
+    div.row
+        div.col-lg-12
+            h1.page-header Galeria
+                if hizkuntza == 'es'
+                    small &nbsp;&nbsp;Aquí encontraras todas las fotos que tengan que ver con el club.
+                else
+                    small &nbsp;&nbsp;Klubarekin zerikusirik duten argazki guztiak hemen aurki ditzakezu.
+    div.row.text-center
+        div#col_first.col-sm-6.col-md-4
+            -each val, ind in data["photosets"]["photoset"]
+                a.thumbnail(href="/#{hizkuntza}/galeria?id=#{val['id']}" date='#{ind}')
+                    img.img-responsive(src='https://farm#{val["farm"]}.staticflickr.com/#{val["server"]}/#{val["primary"]}_#{val["secret"]}_z.jpg' alt="")
+                    h3 #{val["title"]["_content"]}
+        div#col_second.col-sm-6.col-md-4
+        div#col_third.col-sm-6.col-md-4
+    div.row.text-center
+        div.col-lg-12
+            ul.pagination
+                li(class='#{data["photosets"]["page"] == 1 ? "disabled":""}')
+                    a(href="#") «
+                - var n = 0
+                while n < data["photosets"]["pages"]
+                    li(class='#{(n+1) == data["photosets"]["page"]?"active":""}')
+                        a(href="#")= ++n
+                li(class='#{data["photosets"]["page"] == data["photosets"]["pages"] ? "disabled":""}')
+                    a(href="#") »
+
+script(type="text/javascript").
+    document.onreadystatechange = function () {
+        if (document.readyState == "complete") {
+            var past=0;
+            function to_first(cols){
+                $("#col_second > a.thumbnail").each(function(ind,second){
+                    $("#col_first > a.thumbnail").each(function(ind2, first){
+                        if ($(second).attr("date") < $(first).attr("date")){
+                            $(second).insertBefore(first);
+                            return false;
+                        }else if( ind2 ==  $("#col_first > a.thumbnail").length -1){
+                            $("#col_first").append(second);
+                        }
+                    });
+                });
+                $("#col_third > a.thumbnail").each(function(ind, el){
+                    $("#col_first > a.thumbnail").each(function(ind2, el2){
+                        if ($(el).attr("date") < $(el2).attr("date")){
+                            $(el).insertBefore(el2);
+                            return false;
+                        }else if( ind2 ==  $("#col_first > a.thumbnail").length -1){
+                            $("#col_first").append(el);
+                        }
+                    });
+                });
+                if (cols != 1){
+                    $("#col_first > a.thumbnail").each(function(i,el){
+                        var non = i % cols;
+                        if (non == 1){
+                            $("#col_second").append(el);
+                        }else if(non == 2){
+                            $("#col_third").append(el);
+                        }
+                    });
+                }
+            }
+            function org_col() {
+                var size1 = 768;
+                var size2 = 992;
+                var current = $( window ).width();
+                if (current < size1 && past != 1 ){
+                    to_first(1);
+                    past = 1;
+                }else{
+                    if (current < size2 && current >= size1 && past != 2){
+                        to_first(2);
+                        past= 2;
+                    }else if(current >= size2 && past != 3){
+                        to_first(3);
+                        past=3;
+                    }
+                }
+            }
+            $( window ).resize(org_col);
+            org_col.call();
+        }
+    }

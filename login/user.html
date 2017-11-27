@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Getxo Kayaka web">
+    <meta name="author" content="mikel">
+
+    <title>Getxo Kayaka</title>
+
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="/css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+  <body>
+      <div class="background" id='k11'></div>
+      <div class="background" id='k12'></div>
+      <div class="background" id='k13'></div>
+      <div class="background" id='k14'></div>
+      <div class="background" id='k15'></div>
+      <div class="background" id='k21'></div>
+      <div class="background" id='k22'></div>
+      <div class="background" id='c11'></div>
+      <div class="background" id='c21'></div>
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Getxo Kayaka</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Usuario</a></li>
+                <li><a href='#'><span class='glyphicon glyphicon-log-out' style=''></span></a></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+      
+      <!-- CONTENIDO -->
+    <div class="container">
+        <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group" id='nav-1'>
+            <div class="btn-group">
+                <a class="btn btn-default dropdown-toggle prim" data-toggle="dropdown" aria-expanded="false">Noticias<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" class="sel" name='Noticias'>Nueva</a></li>
+                    <li><a href="#" class="sel" name='Noticias'>Noticia 1</a></li>
+                    <li><a href="#" class="sel" name='Noticias'>Noticia 2</a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <a class="btn btn-default dropdown-toggle prim" data-toggle="dropdown" aria-expanded="false">Actividades<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" class="sel" name='Actividades'>Nueva</a></li>
+                    <li><a href="#" class="sel" name='Actividades'>Actividad 1</a></li>
+                    <li><a href="#" class="sel" name='Actividades'>Actividad 2</a></li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn-default" role="button">Galeria</a>
+            <a href="#" class="btn btn-default" role="button">Usuarios</a>
+        </div>
+        <br>
+        <div class="row sect" id='Noticias' style="display:none;">
+            <div class="col-sm-8 blog-main">
+                <div class="blog-post">
+                    <p class="text-right"><u>Euskera</u></p>
+                    <h2 contenteditable="true">Tituloa</h2>
+                    <input type="datetime-local" value="2015-02-12T11:23:50">
+                    <div contenteditable="true" style="margin-top: 10px;">
+                        <p>Hemen textua joango da.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-offset-1 blog-sidebar" role="complementary" style='background-color: transparent;'>
+                <nav class="bs-docs-sidebar affix">
+                    <div class="sidebar-module">
+                        <h3>#Gaiak</h3>
+                        <p>
+                            <a href="/eu?bilaketa=GetxoKirolak">#GetxoKirolak </a>
+                            <a href="/eu?bilaketa=reunion">#reunion </a>
+                            <a href="/eu?bilaketa=bilera">#bilera </a>
+                            <a href="/eu?bilaketa=proyecto">#proyecto </a>
+                            <a href="/eu?bilaketa=RedesSociales">#RedesSociales </a>
+                        </p>
+                    </div>
+                    <div class="sidebar-module">
+                        <h3>Partekatu</h3>
+                        <ol class="list-unstyled">
+                            <li><a href='javascript:social("google+", "#GetxoKirolak bilera")'>Google+</a></li>
+                            <li><a href='javascript:social("twitter", "#GetxoKirolak bilera")'>Twitter</a></li>
+                            <li><a href='javascript:social("facebook", "#GetxoKirolak bilera")'>Facebook</a></li>
+                        </ol>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="col-sm-8 blog-main" style="margin-top: 20px;">
+                <div class="blog-post">
+                    <p class="text-right"><u>Castellano</u></p>
+                    <h2 contenteditable="true">Título</h2>
+                    <input type="datetime-local" value="2015-02-12T11:23:50">
+                    <div contenteditable="true" style="margin-top: 10px;">
+                        <p>Aquí viene el texto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row sect" id='Actividades' style="display:none;">
+            <div class="col-sm-8 blog-main">
+                <div class="blog-post">
+                    <p class="text-right"><u>Euskera</u></p>
+                    <h2 contenteditable="true">Tituloa</h2>
+                    <input type="datetime-local" value="2015-02-12T11:23:50">
+                    <div contenteditable="true" style="margin-top: 10px;">
+                        <p>Hemen textua joango da.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-offset-1 blog-sidebar" role="complementary" style='background-color: transparent;'>
+                <nav class="bs-docs-sidebar affix">
+                    <div class="sidebar-module">
+                        <h3>#Gaiak</h3>
+                        <p>
+                            <a href="/eu?bilaketa=GetxoKirolak">#GetxoKirolak </a>
+                            <a href="/eu?bilaketa=reunion">#reunion </a>
+                            <a href="/eu?bilaketa=bilera">#bilera </a>
+                            <a href="/eu?bilaketa=proyecto">#proyecto </a>
+                            <a href="/eu?bilaketa=RedesSociales">#RedesSociales </a>
+                        </p>
+                    </div>
+                    <div class="sidebar-module">
+                        <h3>Partekatu</h3>
+                        <ol class="list-unstyled">
+                            <li><a href='javascript:social("google+", "#GetxoKirolak bilera")'>Google+</a></li>
+                            <li><a href='javascript:social("twitter", "#GetxoKirolak bilera")'>Twitter</a></li>
+                            <li><a href='javascript:social("facebook", "#GetxoKirolak bilera")'>Facebook</a></li>
+                        </ol>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="col-sm-8 blog-main" style="margin-top: 20px;">
+                <div class="blog-post">
+                    <p class="text-right"><u>Castellano</u></p>
+                    <h2 contenteditable="true">Título</h2>
+                    <input type="datetime-local" value="2015-02-12T11:23:50">
+                    <div contenteditable="true" style="margin-top: 10px;">
+                        <p>Aquí viene el texto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row sect" id='Galeria' style="display:none;">
+            <div class="col-sm-12 blog-main">
+                <h1>Sin implementar!</h1>
+            </div>
+        </div>
+        <div class="row sect" id='Usuarios' style="display:none;">
+            <div class="col-sm-12 blog-main">
+                <h1>Sin implementar!</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+      <script src="/js/main.js"></script>
+      <script>
+        $('a.sel').on("click", function(ev){
+            var t = $(this).attr('name');
+            $('.prim').each(function(){
+                if ($(this).text() == t){
+                    $(this).addClass('btn-primary');
+                }else{
+                    $(this).removeClass('btn-primary');
+                }
+            });
+            $('.sect').css("display", "none");
+            $('#'+t).css("display", "block");
+        });
+      </script>
+  </body></html>

@@ -1,0 +1,246 @@
+doctype html
+html(lang='#{hizkuntza}')
+    head
+        meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="description" content="Getxo Kayaka official web")
+        meta(name="author" content="@develask")
+        title Getxo Kayaka
+        link(href="/img/GetxoKayaka.ico" rel="shortcut icon" type="image/x-icon")
+        link(href="/css/bootstrap.css" rel="stylesheet")
+        link(href="/css/bootstrap-theme.css" rel="stylesheet")
+        link(href="/css/sticky-footer-navbar.css" rel="stylesheet")
+        link(href="/css/main.css" rel="stylesheet")
+    body
+        div(class="background" id='k11')
+        div(class="background" id='k12')
+        div(class="background" id='k13')
+        div(class="background" id='k14')
+        div(class="background" id='k15')
+        div(class="background" id='k21')
+        div(class="background" id='k22')
+        div(class="background" id='c11')
+        div(class="background" id='c21')
+        nav(class="navbar navbar-inverse navbar-fixed-top" role="navigation")
+            div(class='container')
+                div(class="navbar-header")
+                    button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                    a(class="navbar-brand" href="/#{hizkuntza}/")
+                        img(alt="Brand" src="/img/logo.png" height="50px" style="position: relative; top:-15px")
+                div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+                    ul(class="nav navbar-nav")
+                        if hizkuntza=='eu'
+                            if path=='/'
+                                li(class='active')
+                                    a(href='/#{hizkuntza}/') Sarrera
+                            else
+                                li
+                                    a(href='/#{hizkuntza}/') Sarrera
+                            if path.substr(0,8)=='/berriak'
+                                li(class='active')
+                                    a(href='/#{hizkuntza}/berriak') Berriak
+                            else
+                                li
+                                  a(href='/#{hizkuntza}/berriak') Berriak
+                            if path.substr(0,10)=='/jarduerak'
+                                li(class='active')
+                                    a(href='/#{hizkuntza}/jarduerak') Jarduerak
+                            else
+                                li
+                                    a(href='/#{hizkuntza}/jarduerak') Jarduerak
+                            if path.substr(0,8)=='/galeria'
+                                li(class='active')
+                                    a(href='/#{hizkuntza}/galeria') Galeria
+                            else
+                                li
+                                    a(href='/#{hizkuntza}/galeria') Galeria
+                            if path.substr(0,6)=='/kluba'
+                                li(class="dropdown active")
+                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false") Kluba
+                                        span(class="caret")
+                                    ul(class="dropdown-menu" role="menu")
+                                        if path.substr(6,18) =='/getxokayaka'
+                                            li(class='active')
+                                                a(href='/#{hizkuntza}/kluba/getxokayaka') Getxo Kayaka
+                                        else
+                                            li
+                                                a(href='/#{hizkuntza}/kluba/getxokayaka') Getxo Kayaka
+                                        if path.substr(6,15) =='/kokapena'
+                                            li(class='active')
+                                                a(href='/#{hizkuntza}/kluba/kokapena') Kokapena
+                                        else
+                                            li
+                                                a(href='/#{hizkuntza}/kluba/kokapena') Kokapena
+                                        if path.substr(6,16) =='/kontaktua'
+                                            li(class='active')
+                                                a(href='/#{hizkuntza}/kluba/kontaktua') Kontaktua
+                                        else
+                                            li
+                                                a(href='/#{hizkuntza}/kluba/kontaktua') Kontaktua
+                                        if path.substr(6,20) =='/entrenamendua'
+                                            li(class='active')
+                                                a(href='/#{hizkuntza}/kluba/entrenamendua') Entrenamendua
+                                        else
+                                            li
+                                                a(href='/#{hizkuntza}/kluba/entrenamendua') Entrenamendua
+                                        if path.substr(6,16) =='/alokairua'
+                                            li(class='active')
+                                                a(href='/#{hizkuntza}/kluba/alokairua') Alokairua
+                                        else
+                                            li
+                                                a(href='/#{hizkuntza}/kluba/alokairua') Alokairua
+                                                
+                            else
+                                li(class="dropdown")
+                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false") Kluba
+                                        span(class="caret")
+                                    ul(class="dropdown-menu" role="menu")
+                                        li
+                                            a(href='/#{hizkuntza}/kluba/getxokayaka') Getxo Kayaka
+                                        li
+                                            a(href='/#{hizkuntza}/kluba/kokapena') Kokapena
+                                        li
+                                            a(href='/#{hizkuntza}/kluba/kontaktua') Kontaktua
+                                        li
+                                            a(href='/#{hizkuntza}/kluba/entrenamendua') Entrenamendua
+                                        li
+                                            a(href='/#{hizkuntza}/kluba/alokairua') Alokairua
+                        else
+                            if path=='/'
+                                li(class='active')
+                                    a(href='/#{hizkuntza}/') Inicio
+                            else
+                                li
+                                    a(href='/#{hizkuntza}/') Inicio
+                            if path.substr(0,8)=='/berriak'
+                                li(class='active')
+                                    a(href='/#{hizkuntza}/berriak') Noticias
+                            else
+                                li
+                                  a(href='/#{hizkuntza}/berriak') Noticias
+                            if path.substr(0,10)=='/jarduerak'
+                                li(class='active')
+                                    a(href='/#{hizkuntza}/jarduerak') Actividades
+                            else
+                                li
+                                    a(href='/#{hizkuntza}/jarduerak') Actividades
+                            if path.substr(0,8)=='/galeria'
+                                li(class='active')
+                                    a(href='/#{hizkuntza}/galeria') Galeria
+                            else
+                                li
+                                    a(href='/#{hizkuntza}/galeria') Galeria
+                            if path.substr(0,6)=='/kluba'
+                                li(class="dropdown active")
+                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false") Club
+                                        span(class="caret")
+                                    ul(class="dropdown-menu" role="menu")
+                                        if path.substr(6,18) =='/getxokayaka'
+                                            li(class='active')
+                                                a(href='/#{hizkuntza}/kluba/getxokayaka') Getxo Kayaka
+                                        else
+                                            li
+                                                a(href='/#{hizkuntza}/kluba/getxokayaka') Getxo Kayaka
+                                        if path.substr(6,15) =='/kokapena'
+                                            li(class='active')
+                                                a(href='/#{hizkuntza}/kluba/kokapena') Ubicación
+                                        else
+                                            li
+                                                a(href='/#{hizkuntza}/kluba/kokapena') Ubicación
+                                        if path.substr(6,16) =='/kontaktua'
+                                            li(class='active')
+                                                a(href='/#{hizkuntza}/kluba/kontaktua') Contacto
+                                        else
+                                            li
+                                                a(href='/#{hizkuntza}/kluba/kontaktua') Contacto
+                                        if path.substr(6,20) =='/entrenamendua'
+                                            li(class='active')
+                                                a(href='/#{hizkuntza}/kluba/entrenamendua') Entrenamientos
+                                        else
+                                            li
+                                                a(href='/#{hizkuntza}/kluba/entrenamendua') Entrenamientos
+                                        if path.substr(6,16) =='/alokairua'
+                                            li(class='active')
+                                                a(href='/#{hizkuntza}/kluba/alokairua') Alquiler
+                                        else
+                                            li
+                                                a(href='/#{hizkuntza}/kluba/alokairua') Alquiler
+                                                
+                            else
+                                li(class="dropdown")
+                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false") Club
+                                        span(class="caret")
+                                    ul(class="dropdown-menu" role="menu")
+                                        li
+                                            a(href='/#{hizkuntza}/kluba/getxokayaka') Getxo Kayaka
+                                        li
+                                            a(href='/#{hizkuntza}/kluba/kokapena') Ubicación
+                                        li
+                                            a(href='/#{hizkuntza}/kluba/kontaktua') Contacto
+                                        li
+                                            a(href='/#{hizkuntza}/kluba/entrenamendua') Entrenamientos
+                                        li
+                                            a(href='/#{hizkuntza}/kluba/alokairua') Alquiler
+                    ul(class="nav navbar-nav navbar-right")
+                        li(class="dropdown")
+                            a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false")
+                                span(class="glyphicon glyphicon-flag")
+                                | #{hizkuntza}
+                                span(class="caret")
+                            ul(class="dropdown-menu" role="menu")
+                                if hizkuntza == "eu"
+                                    li.active
+                                        a(href='/eu#{path}') eu
+                                    li
+                                        a(href='/es#{path}') es
+                                else
+                                    li
+                                        a(href='/eu#{path}') eu
+                                    li.active
+                                        a(href='/es#{path}') es
+                        li
+                            a(href='/#{hizkuntza}/login')
+                                span.glyphicon.glyphicon-log-in
+                    ul
+                        form.navbar-form.navbar-right(role='search')
+                            div.form-group
+                                input.form-control(type="text" placeholder="Texto de busqueda" name='bilaketa')
+                            button.btn.btn-default(type="submit") Buscar
+        div.container
+            div.jumbotron.text-center
+                if (errCode==404)
+                    if hizkuntza == 'eu'
+                        h1 404 Errorea!
+                        img(src="http://www.terram.cl/wp-content/uploads/2014/08/desierto-atacama-140x140.jpg" alt="..." class="img-circle")
+                        h2 Oops!
+                        p Bilatzen ari zaren orrialdea ezabatua ala lekuz aldatuta izan da.
+                    else
+                        h1 Error 404!
+                        img(src="http://www.terram.cl/wp-content/uploads/2014/08/desierto-atacama-140x140.jpg" alt="..." class="img-circle")
+                        h2 Oops!
+                        p La página que buscas ha sido borrada o movida de sitio.
+                else
+                    if hizkuntza == 'eu'
+                        h1 500 Errorea!
+                        img(src="http://www.bcs.org/upload/img/programming-language-code.jpg" alt="..." class="img-circle")
+                        h2 Oops!
+                        p Zerbait txarto joan da. Ingeniari bat sakrifikatzen ari gara arazoak ahalik eta azkarren konpontzeko. Barkatu arazoengatik.
+                    else
+                        h1 Error 500!
+                        img(src="http://www.bcs.org/upload/img/programming-language-code.jpg" alt="..." class="img-circle")
+                        h2 Oops!
+                        p Algo ha ido mal. Ya estamos sacrificando un ingeniero para solucionar los problemas lo antes posible. Perdon por los problemas causados.
+        footer.footer
+            div.container.text-center
+                if hizkuntza == 'eu'
+                    p.text-muted Eskubide guztiak erresrbatuak - Copyrighta © 2012 Getxo Kayaka - Getxo Piraguismo Taldea
+                else
+                    p.text-muted Todos los derechos reservados - Copyright © 2012 Getxo Kayaka - Getxo Piragüismo Taldea
+        script(src="/js/jquery-2.1.1.min.js")
+        script(src="/js/bootstrap.min.js")
+        script(src="/js/main.js")

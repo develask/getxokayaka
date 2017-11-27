@@ -1,0 +1,58 @@
+div.container.marketing
+    div.row
+        div.col-lg-12
+            if hizkuntza == "es"
+                h1.page-header Noticias
+                    small &nbsp;&nbsp;Aquí encontraras todas las noticias que tengan que ver con el club.
+            else
+                h1.page-header Berriak
+                    small &nbsp;&nbsp;Klubarekin zerikusi dituzten berri guztiak hemen aurki daitezke.
+    div.row
+        div.col-sm-8.blog-main
+            div.blog-post
+                h2 #{data["title_"+hizkuntza]}
+                p.blog-post-meta.text-muted #{toDateString(data['date'], hizkuntza)}
+                != data["html_"+hizkuntza]
+        div.col-sm-3.col-sm-offset-1.blog-sidebar
+            div.sidebar-module
+                if hizkuntza == "es"
+                    h4 #Temas
+                else
+                    h3 #Gaiak
+                p
+                    if data['tags']
+                        -each val in data['tags']
+                            a(href="/#{hizkuntza}?bilaketa=#{val}") ##{val} 
+                    else
+                        a #NoTags
+            div.sidebar-module
+                if hizkuntza == "es"
+                    h4 Comparte
+                else
+                    h3 Partekatu
+                ol.list-unstyled
+                a(href='javascript:social("twitter", "#{data["title_"+hizkuntza]}")')
+                    img(src='/img/twitter.png' style='height:50px;')
+                a(href='javascript:social("google+", "#{data["title_"+hizkuntza]}")')
+                    img(src='/img/google.png' style='height:50px;')
+                a(href='javascript:social("facebook", "#{data["title_"+hizkuntza]}")')
+                    img(src='/img/facebook.png' style='height:50px;')
+            br
+            a(class="twitter-timeline" href="https://twitter.com/hashtag/getxokirolak" data-widget-id="568862196843970560") Tweets sobre #getxokirolak
+script.
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+script.
+    function social(where, title){
+        switch (where){
+                case "twitter":
+                    window.open("http://twitter.com/share?url="+location.href+"&text="+title+"&hashtags=GK");
+                break;
+                case "facebook":
+                    window.open("http://www.facebook.com/sharer.php?u="+ location.href);
+                break;
+                case "google+":
+                    window.open("https://plus.google.com/share?url=" + location.href);
+                break;
+        }
+    }
+                

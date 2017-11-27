@@ -1,0 +1,39 @@
+div.container
+    div.row
+        div.col_lg-12
+            if hizkuntza == "es"
+                h1.page-header Texto buscado:
+                    small &nbsp;&nbsp;#{data.bilaketa}
+            else
+                h1.page-header Bilatutako testua:
+                    small &nbsp;&nbsp;#{data.bilaketa}
+    div.row
+        div#col_first.col-sm-6.col-md-4
+            for val in data
+                div.thumbnail(date='#{val["date"]}')
+                    if val["img"]
+                        img.img-circle(src="#{val['img']}" alt="Generic placeholder image")
+                    div.caption
+                        h3 #{val["title_"+hizkuntza]}
+                        p.blog-post-meta #{toDateString(val['date'], hizkuntza)}
+                        p!= val['text_'+hizkuntza].replace(data.bilaketa,"<code>"+data.bilaketa+"</code>")
+                        p
+                            a.btn.btn-default(href='/#{hizkuntza}/#{val["is"]?"jarduerak":"berriak"}/#{val["_id"]}' role='button') #{hizkuntza == "es"?"Ver noticia":"Ikusi berria"} »
+        if data.length == 0
+            div#col_first.col-sm-12.col-md-12
+                div.thumbnail(date='0')
+                    div.caption
+                        if hizkuntza == 'es'
+                            h3 No se ha encontrado nada
+                            p No se ha encontrado ninguna noticia ni actividad que tenga relacion con 
+                                code #{data.bilaketa}
+                                | .
+                        else
+                            h3 Ez da aurkitu
+                            p
+                                code #{data.bilaketa}
+                                |  hitzarekin ez dira berririk ezta jarduerarik aurkitu.
+                            
+        div#col_second.col-sm-6.col-md-4
+        div#col_third.col-sm-6.col-md-4
+script(src="/js/cols.js" type="text/javascript")

@@ -1,0 +1,44 @@
+//- inicio.jade
+div.container.marketing
+    div.panel.panel-default
+        div.panel-body.text-center
+            div.col-md-9
+                if hizkuntza == "eu"
+                    h3 Getxo Kayaka kluba Eukal Herriko bigarren klubik zaharrena da, #{(Math.floor((new Date().getFullYear()-1976)/5))*5} urterekin.
+                    h3 Getxo Kayaka klub desberdin bat da.
+                else
+                    h3 El club Getxo Kayaka es el segundo club más antiguo de Eukal Herria, con mas de #{(Math.floor((new Date().getFullYear()-1976)/5))*5} años por delante.
+                    h3 Getxo Kayaka es un club diferente.
+            div.col-md-3
+                img(src='/img/joomla_logo_black.jpg')
+
+    div(id="carousel-example-generic" class="carousel slide" data-ride="carousel")
+        ol(class="carousel-indicators")
+            -each val,ind in data['fotos']['photosets']['photoset']
+                li(data-target="#carousel-example-generic" data-slide-to="#{ind}" class='#{ind==0?"active":""}')
+        div.carousel-inner
+            -each val,ind in data['fotos']['photosets']['photoset']
+                div.item(class='#{ind==0?"active":""}')
+                    div(class="text-center" style="background-color: #222;")
+                        a(href='/#{hizkuntza}/galeria?id=#{val["id"]}')
+                            img(src='https://farm#{val["farm"]}.staticflickr.com/#{val["server"]}/#{val["primary"]}_#{val["secret"]}.jpg' alt="..." style="max-width: 100%;")
+                    div.carousel-caption
+                        h3
+                            a(style='color: white' href='/#{hizkuntza}/galeria?id=#{val["id"]}') #{val["title"]["_content"]}
+        a(class="left carousel-control " href="#carousel-example-generic" role="button" data-slide="prev")
+            span(class="glyphicon glyphicon-chevron-left")
+        a(class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next")
+            span(class="glyphicon glyphicon-chevron-right")
+    br
+    div.row
+        -each val,ind in data['noticias']
+            div.col-sm-6.col-md-4
+                div.thumbnail
+                    if val['img']
+                        img(class="img-circle" src="#{val['img']}" alt="Generic placeholder image")
+                    div.caption
+                        h3 #{val['title_'+hizkuntza]}
+                        p.blog-post-meta #{toDateString(val['date'], hizkuntza)}
+                        p #{val['text_'+hizkuntza]}
+                        p
+                            a.btn.btn-default(href='/#{hizkuntza}/#{val["is"]?"jarduerak":"berriak"}/#{val["_id"]}' role='button') #{hizkuntza == "es"?"Ver noticia":"Ikusi berria"} »

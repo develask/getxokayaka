@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /es/login
+Disallow: /eu/login

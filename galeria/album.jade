@@ -1,0 +1,115 @@
+div.container
+    div.row
+        div.col-lg-12
+            h1.page-header Galeria
+                if hizkuntza == 'es'
+                    small &nbsp;&nbsp;Aquí encontraras todas las fotos que tengan que ver con el club.
+                else
+                    small &nbsp;&nbsp;Klubarekin zerikusirik duten argazki guztiak hemen aurki ditzakezu.
+
+    div(class="pswp" tabindex="-1" role="dialog" aria-hidden="true")
+        div(class="pswp__bg")
+        div(class="pswp__scroll-wrap")
+            div(class="pswp__container")
+                div(class="pswp__item")
+                div(class="pswp__item")
+                div(class="pswp__item")
+
+            div(class="pswp__ui pswp__ui--hidden")
+                div(class="pswp__top-bar")
+                    div(class="pswp__counter")
+                    button(class="pswp__button pswp__button--close" title="Close (Esc)")
+                    button(class="pswp__button pswp__button--share" title="Share")
+                    button(class="pswp__button pswp__button--fs" title="Toggle fullscreen")
+                    button(class="pswp__button pswp__button--zoom" title="Zoom in/out")
+
+
+                    div(class="pswp__preloader")
+                        div(class="pswp__preloader__icn")
+                            div(class="pswp__preloader__cut")
+                                div(class="pswp__preloader__donut")
+
+                div(class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap")
+                    div(class="pswp__share-tooltip")
+
+                button(class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)")
+                button(class="pswp__button pswp__button--arrow--right" title="Next (arrow right)")
+
+                div(class="pswp__caption")
+                    div(class="pswp__caption__center")
+
+    
+    div.panel.panel-default
+        div.panel-heading
+            h3.panel-title
+                a(href='https://www.flickr.com/photos/124698999@N02/sets/#{data["id"]}/' target='_blank')
+                    img(src='/img/flickr.png' style='height:25px;')
+                span.badge(style='margin: 0px 10px;') #{data["photoset"]["total"]}
+                | #{data["photoset"]["title"]}
+                a(href='javascript:social("twitter", "#{data["photoset"]["title"]}")' class='pull-right')
+                    img(src='/img/twitter.png' style='height:25px;')
+                a(href='javascript:social("google+", "#{data["photoset"]["title"]}")' class='pull-right')
+                    img(src='/img/google.png' style='height:25px;')
+                a(href='javascript:social("facebook", "#{data["photoset"]["title"]}")' class='pull-right')
+                    img(src='/img/facebook.png' style='height:25px;')
+            script.
+                function social(where, title){
+                    switch (where){
+                            case "twitter":
+                                window.open("http://twitter.com/share?url="+location.href+"&text="+title+"&hashtags=GK");
+                            break;
+                            case "facebook":
+                                window.open("http://www.facebook.com/sharer.php?u="+ location.href);
+                            break;
+                            case "google+":
+                                window.open("https://plus.google.com/share?url=" + location.href);
+                            break;
+                    }
+                }
+        div.panel-body
+            div.row#fotos
+                -each val, index in data["photoset"]['photo']
+                    div.col-xs-6.col-md-3
+                        a.thumbnail(href='#' style='height: 180px;')
+                            img(src='https://farm#{val["farm"]}.staticflickr.com/#{val["server"]}/#{val["id"]}_#{val["secret"]}_m.jpg' style='max-height: 170px;', id='#{val["id"]}' onclick="loadImage(#{index})")
+            nav.text-center
+                ul.pagination
+                    if data["photoset"]["page"] == 1
+                        li.disabled
+                            span(aria-hidden="true") &larr;
+                    else
+                        li
+                            a(href='/#{hizkuntza}#{path}?id=#{data["photoset"]["id"]}&page=#{(parseInt(data["photoset"]["page"])-1)}')
+                                span(aria-hidden="true") &larr;
+                    li
+                    - var n = 0
+                    while n < data["photoset"]["pages"]
+                        li(class="#{(n+1)==data['photoset']['page']?'active':''}")
+                            a(href='/#{hizkuntza}#{path}?id=#{data["photoset"]["id"]}&page=#{(n+1)}')
+                                span= ++n
+                    if data["photoset"]["page"] == data["photoset"]["pages"]
+                        li.disabled
+                            span(aria-hidden="true") &rarr;
+                    else
+                        li
+                            a(href='/#{hizkuntza}#{path}?id=#{data["photoset"]["id"]}&page=#{(parseInt(data["photoset"]["page"])+1)}')
+                                span(aria-hidden="true") &rarr;
+                                
+style(type='text/css')
+    |.ico {
+    |  position: absolute;
+    |  display: block;
+    |  background: url(http://www.slatecube.com/images/play-btn.png);
+    |  height: 100%;
+    |  width: 100%;
+    |  top: 25%;
+    |  left: 37.5%;
+    |  background-size: 25% 25%;
+    |  background-repeat: no-repeat;
+    |}
+
+link(rel="stylesheet" href="../css/photoswipe.css")
+link(rel="stylesheet" href="../css/default-skin/default-skin.css")
+script(src="../js/photoswipe.min.js")
+script(src="../js/photoswipe-ui-default.min.js")
+script(src="../js/galeria.js")

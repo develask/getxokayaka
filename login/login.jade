@@ -1,0 +1,25 @@
+div.container
+    div.jumbotron.text-center
+        if hizkuntza == "eu"
+            p Kautotu eta gero, orrialde honetako edozein informazioa alda dezakezu.
+        else
+            p Una vez identificado podras cambiar todo el contenido de esta web. Seras un afortunado!!!
+    div.row
+        div.col-md-4.col-md-offset-4.thumbnail
+            form.form-signin(role="form" action='/edit' method='POST')
+                if hizkuntza == "eu"
+                    h2.form-signin-heading Kautotu, mezedez:
+                    div.input-group
+                        input(type="text" name='name' class="form-control" placeholder="Erabiltzaile izena")
+                        input(type="password" name='pass' class="form-control" placeholder="Pasahitza")
+                    br
+                    div.input-group
+                        button(class="btn btn-lg btn-primary btn-block" type="submit") Kautotu
+                else
+                    h2.form-signin-heading Por favor, identifícate:
+                    div.input-group
+                        input(type="text" name="name" class="form-control" placeholder="Nombre de usuario")
+                        input(type="password" name="pass" class="form-control" placeholder="Contraseña")
+                    br
+                    div.input-group
+                        button(class="btn btn-lg btn-primary btn-block" type="submit") Identificarse

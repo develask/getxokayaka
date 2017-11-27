@@ -1,0 +1,354 @@
+doctype html
+html(lang='es')
+    head
+        meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="description" content="Getxo Kayaka editor")
+        meta(name="author" content="@develask")
+        title Getxo Kayaka
+        link(href="/img/GetxoKayaka.ico" rel="shortcut icon" type="image/x-icon")
+        link(href="/css/bootstrap.css" rel="stylesheet")
+        link(href="/css/bootstrap-theme.css" rel="stylesheet")
+        link(href="/css/sticky-footer-navbar.css" rel="stylesheet")
+        link(href="/css/main.css" rel="stylesheet")
+    body
+        script(src="/js/jquery-2.1.1.min.js")
+        div(class="background" id='k11')
+        div(class="background" id='k12')
+        div(class="background" id='k13')
+        div(class="background" id='k14')
+        div(class="background" id='k15')
+        div(class="background" id='k21')
+        div(class="background" id='k22')
+        div(class="background" id='c11')
+        div(class="background" id='c21')
+        nav(class="navbar navbar-inverse navbar-fixed-top" role="navigation")
+            div(class='container')
+                div(class="navbar-header")
+                    button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                    a(class="navbar-brand" href="#")
+                        img(alt="Brand" src="/img/logo.png" height="50px" style="position: relative; top:-15px")
+                div.collapse.navbar-collapse
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href='#') #{name}
+                        li
+                            a(href='/edit/signout')
+                                span.glyphicon.glyphicon-log-out
+        div.container
+            div.btn-group.btn-group-justified#nav-1(role='group')
+                div.btn-group
+                    if (que == "noticias")
+                        a.btn.btn-default.dropdown-toggle.prim.btn-primary(data-toggle="dropdown" aria-expanded="false") Noticias
+                            span.caret
+                    else
+                        a.btn.btn-default.dropdown-toggle.prim(data-toggle="dropdown" aria-expanded="false") Noticias
+                            span.caret
+                    ul.dropdown-menu(role='menu')
+                        li
+                            a.sel(href='/edit/noticia/nueva') Nueva
+                        -for each in todo.noticias
+                            li
+                                a.sel(href='/edit/noticia?id=#{each["_id"]}') #{each["title_es"]}
+                div.btn-group
+                    if (que == "actividades")
+                        a.btn.btn-default.dropdown-toggle.prim.btn-primary(data-toggle="dropdown" aria-expanded="false") Actividades
+                            span.caret
+                    else
+                        a.btn.btn-default.dropdown-toggle.prim(data-toggle="dropdown" aria-expanded="false") Actividades
+                            span.caret
+                    ul.dropdown-menu(role='menu')
+                        li
+                            a.sel(href='/edit/actividad/nueva') Nueva
+                        -for each in todo.actividades
+                            li
+                                a.sel(href='/edit/actividad?id=#{each["_id"]}') #{each["title_es"]}
+                div.btn-group
+                    a.btn.btn-default.dropdown-toggle.prim(data-toggle="dropdown" aria-expanded="false") Galeria
+                        span.caret
+                    ul.dropdown-menu(role='menu')
+                        li
+                            a.sel(href='#' name='Galeria') Sin Hacer
+                if (que=='users')
+                    a.btn.btn-default.btn-primary(href='/edit/users') Usuarios
+                else
+                    a.btn.btn-default(href='/edit/users') Usuarios
+                if (que=='log')
+                    a.btn.btn-default.btn-primary(href='/edit/log') Log
+                else
+                    a.btn.btn-default(href='/edit/log') Log
+            br
+            if (que == "actividades" || que == "noticias")
+                div#editbtn(style="position: fixed; top: 20%; left: 5px; height: 60%; width: 50px;")
+                    button#newul(type="button" class="btn btn-default" aria-label="Left Align")
+                        span(class="glyphicon glyphicon-th-list" aria-hidden="true")
+                    button#newnormal(type="button" class="btn btn-default" aria-label="Left Align")
+                        span(class="glyphicon glyphicon-font" aria-hidden="true")
+                    button#newbold(type="button" class="btn btn-default" aria-label="Left Align")
+                        span(class="glyphicon glyphicon-bold" aria-hidden="true")
+                    button#newitalic(type="button" class="btn btn-default" aria-label="Left Align")
+                        span(class="glyphicon glyphicon-italic" aria-hidden="true")
+                    button#newimg(type="button" class="btn btn-default" aria-label="Left Align")
+                        span(class="glyphicon glyphicon-picture" aria-hidden="true")
+                div(class="modal fade" id="fotosModal" role="dialog" aria-hidden="true")
+                    div(class="modal-dialog")
+                        div(class="modal-content")
+                            div(class="modal-header")
+                                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                    span(aria-hidden="true") &times;
+                                h4(class="modal-title" id="exampleModalLabel") New message
+                            div(class="modal-body")
+                                p Aqui irian las fotografias
+                            div(class="modal-footer")
+                                button(type="button" class="btn btn-default" data-dismiss="modal") Cerrar
+                script.
+                    $('#fotosModal').on('show.bs.modal', function (e) {
+                        $.ajax({
+                            url: "/edit/imgs"
+                        }).done(function(datos){
+                            console.log(datos);
+                        });
+                    });
+                    function insertTextAtCursor(functionToGetNode) {
+                        var sel, range, html;
+                        if (window.getSelection) {
+                            sel = window.getSelection();
+                            focusNode = sel.focusNode;
+                            while (focusNode.parentNode && !(focusNode.id == "htmleu" || focusNode.id == "htmles")){
+                                focusNode = focusNode.parentNode;
+                            }
+                            if (sel.getRangeAt && sel.rangeCount && (focusNode.id == "htmleu" || focusNode.id == "htmles")) {
+                                range = sel.getRangeAt(0);
+                                var text = range.toString();
+                                range.deleteContents();
+                                range.insertNode( functionToGetNode(text) );
+                            }
+                        }else{alert("El navegador no soporta estas funciones.");}
+                    }
+                    $("#editbtn > button").on("click", function(ev){
+                        switch($(this).attr("id")){
+                            case "newul":
+                                insertTextAtCursor(function(text){
+                                    var node = document.createElement("ul");
+                                    var li = document.createElement("li");
+                                    li.appendChild(document.createTextNode(text==""?"Elemento 1":text));
+                                    node.appendChild(li);
+                                    return node;
+                                });
+                            break;
+                            case "newnormal":
+                                insertTextAtCursor(function(text){
+                                    var node = document.createElement("span");
+                                    node.appendChild(document.createTextNode(text==""?"Normal text":text));
+                                    return node;
+                                });
+                            break;
+                            case "newbold":
+                                insertTextAtCursor(function(text){
+                                    var node = document.createElement("b");
+                                    node.appendChild(document.createTextNode(text==""?"Bold text":text));
+                                    return node;
+                                });
+                            break;
+                            case "newitalic":
+                                insertTextAtCursor(function(text){
+                                    var node = document.createElement("i");
+                                    node.appendChild(document.createTextNode(text==""?"Italic text":text));
+                                    return node;
+                                });
+                            break;
+                            case "newimg":
+                                insertTextAtCursor(function(text){
+                                    var node = document.createElement("img");
+                                    $('#fotosModal').modal('show');
+                                    node.setAttribute("src", "path")
+                                    //return node;
+                                });
+                            break;
+                            default:
+                                console.log("No se sabe");
+                        }
+                    });
+                div.row
+                    div.col-sm-8.blog-main
+                        div.blog-post
+                            p.text-right
+                                u Euskera
+                            h2#titleeu(contenteditable='true') #{datos['title_eu']?datos['title_eu']:"Tituloa"}
+                            div#htmleu(contenteditable='true') !{datos['html_eu']?datos['html_eu']:"<p>Hemen textua joango da.</p>"}
+                    div.col-md-3.col-sm-offset-1.blog-sidebar(role="complementary" style='background-color: transparent;')
+                        nav.bs-docs-sidebar.affix(style="max-height: calc(100% - 120px); overflow: scroll;")
+                            div.sidebar-module
+                                h3 Fecha
+                                - var fecha = new Date(datos['date'] || Date.now());
+                                input#time(type='datetime-local' value='#{fecha.getFullYear()}-#{(fecha.getMonth()+1)<10?"0"+(fecha.getMonth()+1):(fecha.getMonth()+1)}-#{(fecha.getDate())<10?"0"+(fecha.getDate()):(fecha.getDate())}T#{(fecha.getHours())<10?"0"+(fecha.getHours()):(fecha.getHours())}:#{(fecha.getMinutes())<10?"0"+(fecha.getMinutes()):(fecha.getMinutes())}:#{(fecha.getSeconds())<10?"0"+(fecha.getSeconds()):(fecha.getSeconds())}')
+                                h3 #Gaiak/Temas
+                                ul#tagsList
+                                    if datos['tags']
+                                        for el in datos['tags']
+                                            li(style="margin-top: 5px;") #{el}
+                                                button(type="button" class="close")
+                                                    span &times;
+                                input#tagN(type='text' placeholder='Nuevo')
+                                button#nuevoTag Poner
+                                h3 Imagen
+                                input#imgprincipal(type='text' placeholder='src' value='#{datos["img"]?datos["img"]:""}' style='width: 100%;')
+                                br
+                                img.img-circle#imgp(src='#{datos["img"]?datos["img"]:""}' style="max-height: 100px;")
+                                h3 Editores
+                                ul#usersList
+                                    if datos['users']
+                                        for el in datos['users']
+                                            li(style="margin-top: 5px;") #{el}
+                                h3 Acciones
+                                div
+                                    button#guardar(name='#{datos["_id"]?datos["_id"]:""}') Guardar
+                                    button#borrar(name='#{datos["_id"]?datos["_id"]:""}') Borrar
+                    div.col-sm-8.blog-main(style="margin-top: 20px;")
+                        div.blog-post
+                            p.text-right
+                                u Castellano
+                            h2#titlees(contenteditable='true') #{datos['title_es']?datos['title_es']:"Título"}
+                            div#htmles(contenteditable='true') !{datos['html_es']?datos['html_es']:"<p>Aqui va el texto.</p>"}
+            if (que == "users")
+                style.
+                    div.col-md-2.blog-sidebar > button{
+                        width: 90%;
+                    }
+                div.row
+                    div.col-md-2.blog-sidebar
+                        h3 Users List
+                        for el in datos['users']
+                            button(type="button" class="btn btn-default userbtn" aria-label="Left Align" id="#{el['_id']}") #{el['name']}
+                        br
+                        br
+                        button(type="button" class="btn btn-default newbtn" aria-label="Left Align") Nuevo
+                        br
+                        br
+                    div.col-md-9.blog-main.col-sm-offset-1
+                        div.blog-post
+                            h2#username User Name
+                script.
+                    $(".userbtn").on("click",function(){
+                        $.ajax({
+                            url: "/edit/users?id="+$(this).attr('id')
+                        }).done(function(data){alert(JSON.stringify(data));});
+                    });
+            if (que == "log")
+                div.row
+                    div.col-sm-12.blog-main
+                        h2 Log
+                        a.btn.btn-default(href='/edit/log/delete') Borrar
+                        table.table.table-striped
+                            thead
+                                tr
+                                    th Fecha
+                                    th Direccion
+                                    th User-Agent
+                                    th referrer
+                                    th ip
+                            tbody
+                                -var ind = datos.length-2;
+                                while ind >= 0
+                                    - var el = datos[ind]
+                                    tr
+                                        td #{(new Date(parseInt(el.split("\t")[0]))).toLocaleString()}
+                                        td #{el.split("\t")[1]}
+                                        td #{el.split("\t")[2]}
+                                        td #{el.split("\t")[3]}
+                                        td #{el.split("\t")[4]}
+                                    - ind = ind -1;
+
+    script(src="/js/bootstrap.min.js")
+    script(src="/js/main.js")
+    script.
+        $('#imgprincipal').on("change", function(ev){
+            var sr = $('#imgprincipal').val();
+            $('#imgp').attr('src', sr);
+            if (sr == ""){
+                $('#imgp').css("display", "none");
+            }else{
+                $('#imgp').css("display", "block");
+            }
+        });
+        $("#nuevoTag").on("click", function(ev){
+            var tag = $("#tagN").val();
+            $("#tagN").val("");
+            $("#tagsList").append("<li style='margin-top: 5px;'>"+tag+"<button type='button' class='close'><span>&times;</span></button></li>")
+        });
+        $( "#tagsList" ).delegate( "button", "click", function() {
+          $($( this ).parent()).remove();
+        });
+        $("#borrar").on("click", function(ev){
+            var id = $(this).attr("name");
+            if (id != ""){
+                if (confirm("Estas seguro de que quiero borrarlo?")){
+                    $.ajax({
+                      type: "DELETE",
+                      url: "/edit/#{que=='noticias'?'noticia':'actividad'}?id="+id,
+                    }).done(function( msg ) {
+                        if (msg == "ERROR"){
+                            alert("Ha ocurrido un error en el servidor.");
+                        }else{
+                            alert("Se ha borrado correctamente.");
+                            window.location.assign("/edit/");
+                        }
+                    });
+                }
+            }else{
+                alert("Un documento todavia sin guardar no se puede borrar.");
+            }
+        });
+        $("#guardar").on("click", function(ev){
+            var id = $(this).attr("name");
+            var ob = {};
+            ob['html_eu'] = $("#htmleu").html();
+            ob['text_eu'] = $("#htmleu").text().substring(0,97)+"...";
+            ob['html_es'] = $("#htmles").html();
+            ob['text_es'] = $("#htmles").text().substring(0,97)+"...";
+            ob['title_es'] = $("#titlees").html();
+            ob['title_eu'] = $("#titleeu").html();
+            var sr = $('#imgp').attr('src');
+            if (sr != ""){
+                ob['img'] = sr;
+            }
+            var time = new Date($("#time").val());
+            ob['date'] = time.getTime();
+            ob['tags'] = [];
+            ob['users'] = [];
+            $("#tagsList li").each(function (ind, el){
+                var t = $(el).text();
+                ob['tags'].push(t.substring(0,t.length-1));
+            });
+            $("#usersList li").each(function (ind, el){
+                var t = $(el).text();
+                ob['users'].push(t);
+            });
+            console.log(ob);
+            if (id != ""){
+                $.ajax({
+                  type: "POST",
+                  url: "/edit/#{que=='noticias'?'noticia':'actividad'}?id="+id,
+                  data: ob
+                }).done(function( msg ) {
+                    alert( "Estado de datos: " + msg );
+                });
+            }else{
+                $.ajax({
+                  type: "POST",
+                  url: "/edit/#{que=='noticias'?'noticia':'actividad'}/nueva",
+                  data: ob
+                }).done(function( msg ) {
+                    if (msg == "ERROR"){
+                        alert("Ha ocurrido un error en el servidor.");
+                    }else{
+                        window.location.assign("/edit/#{que=='noticias'?'noticia':'actividad'}?id="+msg);
+                    }
+                });
+            }
+        });

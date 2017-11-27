@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Getxo Kayaka official web"><meta name="author" content="@develask"><title>Getxo Kayaka</title><link href="/img/GetxoKayaka.ico" rel="shortcut icon" type="image/x-icon"><link href="/css/bootstrap.css" rel="stylesheet"><link href="/css/bootstrap-theme.css" rel="stylesheet"><link href="/css/sticky-footer-navbar.css" rel="stylesheet"><link href="/css/main.css" rel="stylesheet"></head><body><div id="k11" class="background"></div><div id="k12" class="background"></div><div id="k13" class="background"></div><div id="k14" class="background"></div><div id="k15" class="background"></div><div id="k21" class="background"></div><div id="k22" class="background"></div><div id="c11" class="background"></div><div id="c21" class="background"></div><nav role="navigation" class="navbar navbar-inverse navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" class="navbar-toggle collapsed"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/#{hizkuntza}/" class="navbar-brand"><img alt="Brand" src="/img/logo.png" height="50px" style="position: relative; top:-15px"></a></div><div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse"><ul class="nav navbar-nav"><li><a href="/es/">Inicio</a></li><li><a href="/es/berriak">Noticias</a></li><li><a href="/es/jarduerak">Actividades</a></li><li><a href="/es/galeria">Galeria</a></li><li class="dropdown active"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Club<span class="caret"></span></a><ul role="menu" class="dropdown-menu"><li><a href="/es/kluba/getxokayaka">Getxo Kayaka</a></li><li><a href="/es/kluba/kokapena">Ubicación</a></li><li class="active"><a href="/es/kluba/kontaktua">Contacto</a></li><li><a href="/es/kluba/entrenamendua">Entrenamientos</a></li><li><a href="/es/kluba/alokairua">Alquiler</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right"><li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><span class="glyphicon glyphicon-flag"></span>es<span class="caret"></span></a><ul role="menu" class="dropdown-menu"><li><a href="/eu/kluba/kontaktua">eu</a></li><li class="active"><a href="/es/kluba/kontaktua">es</a></li></ul></li><li><a href="/es/login"><span class="glyphicon glyphicon-log-in"></span></a></li></ul><ul><form role="search" class="navbar-form navbar-right"><div class="form-group"><input type="text" placeholder="Texto de busqueda" class="form-control" name='bilaketa'></div><button type="submit" class="btn btn-default">Buscar</button></form></ul></div></div></nav>
+
+<!-- CONTENIDO -->
+<div class="container">
+  <!-- Page Header -->
+
+<div class="row">
+            <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+<!--                  <div class="modal-body">-->
+                    <div class="alert alert-info" role="alert">Enviando el mensaje</div>
+<!--                  </div>-->
+                </div>
+              </div>
+            </div>
+    <div class="modal fade" id="Mail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Nuevo Mensaje</h4>
+      </div>
+      <div class="modal-body">
+        <div class="bs-example">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">* Nombre</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="nombre" id='nombre'>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">* Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" placeholder="email" id="email">
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Telefono</label>
+                 <div class="col-sm-10"> 
+                <input type="text" class="form-control" placeholder="tlf" id="tlf">
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Asunto</label>
+                  <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="asunto" id="asunto">
+                  </div>
+              </div>
+              <div class="form-group">
+                <label>Mensaje</label>
+                  <textarea class="form-control" placeholder="Mensaje" id="msg"></textarea>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button class="btn btn-default" id="enviar">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-sm-8 blog-main" style="padding: 0px;">
+    <div class="panel panel-default" style="margin: 0px;">
+      <div class="panel-heading">
+        <h3 class="panel-title">Contacto</h3>
+      </div>
+      <div class="panel-body">
+          <p>Si quieres contactar con nosotros, puedes hacerlo a traves de los siguientes metodos:</p>
+          <ul>
+              <li>Email: <a href="mailto:getxokayaka@yahoo.es">getxokayaka@yahoo.es</a></li>
+              <li>Facebook: <a href='http://facebook.com/GetxoKayaka'>facebook.com/GetxoKayaka</a></li>
+              <li>Twitter: <a href='https://twitter.com/GetxoKayaka'> @getxokayaka</a></li>
+              <li>Flickr: <a href='https://www.flickr.com/photos/124698999@N02/'>piraguismo getxo</a></li>
+              <li>Google+: <a href='https://plus.google.com/115370005112250570388/posts'>Getxo Kayaka</a></li>
+              <li>O también puedes dejar un mensaje aqui:</li>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Mail">Enviar mensaje</button>
+          </ul>
+      </div>
+    </div>
+
+</div><!-- /.blog-main -->
+
+<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+  <div class="sidebar-module">
+    <h4>#Temas</h4>
+    <p><a href="/es?bilaketa=Contacto">#Contacto</a> <a href="/es?bilaketa=Getxo">#Getxo</a> <a href="/es?bilaketa=piragua">#piragua</a> <a href="/es?bilaketa=kayak">#kayak</a> <a href="/es?bilaketa=Club">#Club</a></p>
+  </div>
+  <div class="sidebar-module">
+    <h4>Comparte</h4>
+    <ol class="list-unstyled">
+      <li><a href='javascript:social("google+", "contacto"'>Google+</a></li>
+      <li><a href='javascript:social("twitter", "contacto");'>Twitter</a></li>
+      <li><a href='javascript:social("facebook", "contacto");'>Facebook</a></li>
+    </ol>
+  </div>
+</div><!-- /.blog-sidebar -->
+
+</div><!-- /.row -->
+</div>
+    
+<footer class="footer"><div class="container text-center"><p class="text-muted">Todos los derechos reservados - Copyright © 2012 Getxo Kayaka - Getxo Piragüismo Taldea</p></div></footer><script src="/js/jquery-2.1.1.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/main.js"></script>
+<script>
+    function social(where, title){
+        switch (where){
+                case "twitter":
+                    window.open("http://twitter.com/share?url="+location.href+"&text="+title+"&hashtags=GK");
+                break;
+                case "facebook":
+                    window.open("http://www.facebook.com/sharer.php?u="+ location.href);
+                break;
+                case "google+":
+                    window.open("https://plus.google.com/share?url=" + location.href);
+                break;
+        }
+    }
+    $("#enviar").click(function(ev){
+        var nombre = $("#nombre").val();
+        var email = $("#email").val();
+        var telefono = $("#tlf").val();
+        var asunto = $("#asunto").val();
+        var msg = $("#msg").val();
+        if (nombre != "" && msg != "" && email != ""){
+            $("#Mail").modal('hide');
+            $("#Modal").modal('show');
+            $.post("/es/mail", {
+                nombre: nombre,
+                email: email,
+                telefono: telefono,
+                asunto: asunto,
+                msg: msg
+            }).done(function (data, code){
+                $("#Modal").modal('hide');
+            });
+        }else{
+            alert("falta algun campo");
+        }
+    });
+</script>
+</body></html>

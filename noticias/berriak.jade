@@ -1,0 +1,47 @@
+//- berriak.jade
+div.container.marketing
+    div.row
+        div.col-lg-12
+            if hizkuntza == "es"
+                h1.page-header Noticias
+                    small &nbsp;&nbsp;Aquí encontraras todas las noticias que tengan que ver con el club.
+            else
+                h1.page-header Berriak
+                    small &nbsp;&nbsp;Klubarekin zerikusi dituzten berri guztiak hemen aurki daitezke.
+    div.row
+        div#col_first.col-sm-6.col-md-4
+            -each val,ind in data
+                div.thumbnail(date='#{val["date"]}')
+                    if val['img']
+                        img.img-circle(src='#{val["img"]}')
+                    div.caption
+                        h3 #{val["title_"+hizkuntza]}
+                        p.blog-post-meta #{toDateString(val['date'], hizkuntza)}
+                        p #{val["text_"+hizkuntza]}
+                        p
+                            a.btn.btn-default(href='/#{hizkuntza}/berriak/#{val["_id"]}' role='button') #{hizkuntza == "es"?"Ver noticia":"Ikusi berria"} »
+        div#col_second.col-sm-6.col-md-4
+        div#col_third.col-sm-6.col-md-4
+    nav.text-center
+        ul.pagination
+            if data.page == 1
+                li.disabled
+                    span(aria-hidden="true") &larr;
+            else
+                li
+                    a(href='/#{hizkuntza}/berriak?page=#{(parseInt(data.page)-1)}')
+                        span(aria-hidden="true") &larr;
+            li
+            - var n = 0
+            while n < data.pages
+                li(class="#{(n+1)==data.page?'active':''}")
+                    a(href='/#{hizkuntza}/berriak?page=#{(n+1)}')
+                        span= ++n
+            if data.page == data.pages
+                li.disabled
+                    span(aria-hidden="true") &rarr;
+            else
+                li
+                    a(href='/#{hizkuntza}/berriak?page=#{(parseInt(data.page)+1)}')
+                        span(aria-hidden="true") &rarr;
+script(src="/js/cols.js" type="text/javascript")
