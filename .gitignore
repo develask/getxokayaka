@@ -1,5 +1,8 @@
 # Node build artifacts
 node_modules
+!node_modules/flickr.js
+!node_modules/mail.js
+!node_modules/mongo.js
 npm-debug.log
 
 # Local development
