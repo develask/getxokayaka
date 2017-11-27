@@ -622,7 +622,7 @@ http.createServer(function (req, res) {
             res.end();
         }
     }
-}).listen(process.env.OPENSHIFT_NODEJS_PORT || 8080, process.env.OPENSHIFT_NODEJS_IP, function(){
-    console.log('%s: Node server started on %s:%d ...',
-                        Date(Date.now()), process.env.OPENSHIFT_NODEJS_IP, process.env.OPENSHIFT_NODEJS_PORT);
+}).listen(process.env.PORT || 5000, function(){
+    console.log('%s: Node server started on getxokayaka:%d ...',
+                        Date(Date.now()), process.env.OPENSHIFT_NODEJS_PORT);
 });
